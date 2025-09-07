@@ -18,8 +18,8 @@ type Metric struct {
 	Value string            `json:"value"`
 }
 
-// MetricFile defines a set of Metrics
-type MetricFile []Metric
+// MetricSet defines a set of Metrics
+type MetricSet []Metric
 
 var textRegex = regexp.MustCompile(`^[\w\-/]+$`)
 var valueRegex = regexp.MustCompile(`^-?\d+(.\d+)?$`)
@@ -76,7 +76,7 @@ func (m *Metric) Validate() bool {
 }
 
 // String formats the set of Metrics into Prometheus text format
-func (mf *MetricFile) String() string {
+func (mf *MetricSet) String() string {
 	var sb strings.Builder
 	for _, x := range *mf {
 		sb.WriteString(x.String())
@@ -85,7 +85,7 @@ func (mf *MetricFile) String() string {
 }
 
 // Validate confirms that the Metrics fields are set with valid values
-func (mf *MetricFile) Validate() bool {
+func (mf *MetricSet) Validate() bool {
 	for _, x := range *mf {
 		if !x.Validate() {
 			return false
