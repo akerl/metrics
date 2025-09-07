@@ -1,7 +1,5 @@
-module github.com/akerl/input
+module github.com/akerl/metrics
 
-go 1.22.0
-
-replace github.com/ktr0731/go-fuzzyfinder => github.com/akerl/go-fuzzyfinder v0.8.1-0.20240219013315-145c720c8ce9
+go 1.24.2
 
 require github.com/akerl/timber/v2 v2.0.1

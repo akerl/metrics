@@ -1,2 +1,2 @@
-PACKAGE = input
+PACKAGE = metrics
 LIB_ONLY = true
