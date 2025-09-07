@@ -1,0 +1,19 @@
+name 'input'
+org 'akerl'
+
+source(
+  type: 'git',
+  path: '.'
+)
+
+build do
+  run 'make local'
+end
+
+package(
+  type: 'noop'
+)
+
+test do
+  # TODO: add tests
+end
