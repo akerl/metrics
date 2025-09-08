@@ -22,6 +22,7 @@ type Metric struct {
 type MetricSet []Metric
 
 var metricRegex = regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_]*$`)
+var typeRegex = regexp.MustCompile(`^(counter|gauge|histogram|summary)$`)
 var textRegex = regexp.MustCompile(`^[\w\-/ ]+$`)
 var valueRegex = regexp.MustCompile(`^-?\d+(.\d+)?$`)
 
