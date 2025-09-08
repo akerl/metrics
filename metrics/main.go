@@ -21,7 +21,8 @@ type Metric struct {
 // MetricSet defines a set of Metrics
 type MetricSet []Metric
 
-var textRegex = regexp.MustCompile(`^[\w\-/]+$`)
+var metricRegex = regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_]*$`)
+var textRegex = regexp.MustCompile(`^[\w\-/ ]+$`)
 var valueRegex = regexp.MustCompile(`^-?\d+(.\d+)?$`)
 
 // String formats the Metric into Prometheus text format
@@ -50,11 +51,11 @@ func (m *Metric) TagString() string {
 
 // Validate confirms that the Metric fields are set with valid values
 func (m *Metric) Validate() bool {
-	if !textRegex.MatchString(m.Name) {
+	if !metricRegex.MatchString(m.Name) {
 		logger.DebugMsgf("invalid metric name: %s", m.Name)
 		return false
 	}
-	if !textRegex.MatchString(m.Type) {
+	if !typeRegex.MatchString(m.Type) {
 		logger.DebugMsgf("invalid metric type: %s (%s)", m.Type, m.Name)
 		return false
 	}
